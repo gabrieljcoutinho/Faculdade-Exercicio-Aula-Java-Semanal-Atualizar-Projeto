@@ -1,84 +1,76 @@
-/**
- * @author Gabriel Jorge Coutinho
- * @version 2.0 - Refactor: Encapsulamento e Regras de Negócio
- */
-public class Carro {
-
+public class exercicio {
+    // Atributos privados: Ninguém mexe direto (Sinal de - no Astah)
     private String modelo;
     private String cor;
     private int velocidadeAtual;
-    private final int LIMITE_VELOCIDADE = 220; // Constante de segurança
 
-    public Carro(String modelo, String cor) {
-        this.modelo = modelo;
-        this.cor = cor;
-        this.velocidadeAtual = 0;
+    public exercicio() {
     }
 
+    // Métodos Getter e Setter (Sinal de + no Astah)
+    public String getModelo() {
+        return modelo;
+    }
 
-    public String getModelo() { return modelo; }
-    public void setModelo(String modelo) { this.modelo = modelo; }
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
 
-    public String getCor() { return cor; }
-    public void setCor(String cor) { this.cor = cor; }
+    public String getCor() {
+        return cor;
+    }
 
-    public int getVelocidadeAtual() { return velocidadeAtual; }
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
 
+    public int getVelocidadeAtual() {
+        return velocidadeAtual;
+    }
 
     public void setVelocidadeAtual(int velocidade) {
-        if (velocidade < 0) {
-            System.err.println(">> BLOQUEADO: Tentativa de velocidade negativa (" + velocidade + " km/h)");
-            return;
-        }
-        if (velocidade > LIMITE_VELOCIDADE) {
-            System.err.println(">> ADVERTÊNCIA: Limite de segurança atingido (" + LIMITE_VELOCIDADE + " km/h)");
-            this.velocidadeAtual = LIMITE_VELOCIDADE;
-        } else {
+        // Regra de segurança: a velocidade não pode ser menor que zero
+        if (velocidade >= 0) {
             this.velocidadeAtual = velocidade;
+        } else {
+            System.out.println("Aviso: O carro já está parado.");
+            this.velocidadeAtual = 0;
         }
     }
 
-
-
+    // Métodos de Ação
     public void acelerar() {
-        System.out.println("Comando: ACELERAR [+]");
-        setVelocidadeAtual(this.velocidadeAtual + 20);
-        exibirStatus();
+        setVelocidadeAtual(this.velocidadeAtual + 10);
+        System.out.println("Acao realizada: ACELERAR");
+        System.out.println("Velocidade atual do " + this.modelo + ": " + this.velocidadeAtual + " km/h");
+        System.out.println("--------------------------------");
     }
 
     public void frear() {
-        System.out.println("Comando: FREAR [-]");
-        setVelocidadeAtual(this.velocidadeAtual - 20);
-        exibirStatus();
-    }
-
-    private void exibirStatus() {
-        String moldura = "------------------------------------";
-        System.out.println(moldura);
-        System.out.printf("VEÍCULO: %s | COR: %s %n", modelo.toUpperCase(), cor.toUpperCase());
-        System.out.printf("VELOCIDADE ATUAL: %d km/h %n", velocidadeAtual);
-        System.out.println(moldura);
+        setVelocidadeAtual(this.velocidadeAtual - 10);
+        System.out.println("Acao realizada: FREAR");
+        System.out.println("Velocidade atual do " + this.modelo + ": " + this.velocidadeAtual + " km/h");
+        System.out.println("--------------------------------");
     }
 
     public static void main(String[] args) {
-        // Instanciação moderna
-        Carro meuCarro = new Carro("Skyline GTR", "Bayside Blue");
+        exercicio carro = new exercicio();
 
-        System.out.println("INICIALIZANDO SISTEMAS...");
+        // Agora usamos os SETTERS para configurar o objeto
+        carro.setModelo("Fusca");
+        carro.setCor("Azul");
+        carro.setVelocidadeAtual(0);
 
-        // Teste 1: Aceleração normal
-        meuCarro.acelerar();
+        System.out.println("OBJETO: CARRO (Encapsulado)");
+        System.out.println("CARACTERISTICAS:");
+        System.out.println("- Modelo: " + carro.getModelo());
+        System.out.println("- Cor: " + carro.getCor());
+        System.out.println("- Velocidade Inicial: " + carro.getVelocidadeAtual());
+        System.out.println("================================");
 
-        // Teste 2: Tentativa de quebra de integridade (Burlar o sistema)
-        System.out.println("\nTESTE DE VULNERABILIDADE: Injetando velocidade negativa...");
-        meuCarro.setVelocidadeAtual(-150);
-
-        // Teste 3: Tentativa de ultrapassar limite físico
-        System.out.println("\nTESTE DE PERFORMANCE: Forçando limite de hardware...");
-        meuCarro.setVelocidadeAtual(500);
-
-        System.out.println("\nRESULTADO FINAL DO OBJETO:");
-        System.out.println("Modelo: " + meuCarro.getModelo());
-        System.out.println("Velocidade Segura: " + meuCarro.getVelocidadeAtual() + " km/h");
+        System.out.println("ACOES:");
+        carro.acelerar();
+        carro.acelerar();
+        carro.frear();
     }
 }
