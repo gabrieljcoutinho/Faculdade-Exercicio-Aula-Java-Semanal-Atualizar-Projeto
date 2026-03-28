@@ -1,4 +1,4 @@
 Aluno: Gabriel Jorge Coutinho
 Rm: 565441
 
-Repositório do github: https://github.com/gabrieljcoutinho/Faculdade-OOP-JAVA
+Repositório do github: https://github.com/gabrieljcoutinho/Faculdade-Exercicio-Aula-Java-Semanal-Atualizar-Projeto
