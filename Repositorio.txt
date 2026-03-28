@@ -1,4 +1,4 @@
 Aluno: Gabriel Jorge Coutinho
 Rm: 565441
 
-Repositório do github: https://github.com/gabrieljcoutinho/Faculdade-Java-Exercicio-Fundamentos-de-OO-Classes-e-Objetos
+Repositório do github: https://github.com/gabrieljcoutinho/Faculdade-OOP-JAVA
