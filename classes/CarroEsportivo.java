@@ -6,7 +6,7 @@ public class CarroEsportivo extends exercicio {
         this.modoTurbo = modoTurbo;
     }
 
-    // Implementação OBRIGATÓRIA do método abstrato
+    // Implementacao OBRIGATORIA do metodo abstrato
     @Override
     public String descricaoVeiculo() {
         return "Carro Esportivo | Turbo: " + (modoTurbo ? "ATIVADO" : "desativado");
