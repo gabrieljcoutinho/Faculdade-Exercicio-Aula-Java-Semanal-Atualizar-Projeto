@@ -1,4 +1,4 @@
-public class exercicio {
+public abstract class exercicio {
     private String modelo;
     private String cor;
     private int velocidadeAtual;
@@ -10,6 +10,11 @@ public class exercicio {
         this.motor = motor;
         this.velocidadeAtual = 0;
     }
+
+    // Método ABSTRATO: cada subclasse OBRIGATORIAMENTE deve implementar
+    // Faz sentido? SIM! Um "veículo genérico" não tem descrição própria.
+    // Um Caminhão descreve sua carga; um Esportivo descreve seu turbo.
+    public abstract String descricaoVeiculo();
 
     // Getters e Setters
     public String getModelo() { return modelo; }
@@ -25,7 +30,4 @@ public class exercicio {
         setVelocidadeAtual(this.velocidadeAtual + 10);
         System.out.println("Acao: ACELERAR -> " + this.modelo + " a " + this.velocidadeAtual + " km/h");
     }
-
-    /* Css da responsividade desse componente:
-       Layout escalável com Herança e Polimorfismo. */
 }

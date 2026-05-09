@@ -6,28 +6,31 @@ public class Caminhao extends exercicio {
         this.capacidadeCarga = capacidadeCarga;
     }
 
+    // Implementação OBRIGATÓRIA do método abstrato
+    @Override
+    public String descricaoVeiculo() {
+        return "Caminhao de Carga | Capacidade: " + this.capacidadeCarga + " toneladas";
+    }
+
     public void carregarCarga() {
         System.out.println("SISTEMA: Carregando " + this.capacidadeCarga + " toneladas de mercadoria.");
     }
-
-    /* Css da responsividade desse componente:
-       Layout robusto para transporte de grandes volumes de dados. */
 
     public static void main(String[] args) {
         // 1. Definindo os motores
         Motor motorV12 = new Motor("Gasolina High Octane", 700);
         Motor motorDiesel = new Motor("Diesel S10", 540);
 
-        // 2. Instanciando os objetos (Herdeiros)
+        // 2. Instanciando os objetos (subclasses concretas)
         CarroEsportivo ferrari = new CarroEsportivo("F8 Tributo", "Vermelho Rosso", motorV12, true);
-        Caminhao volvo = new Caminhao("FH 540", "Prata Metálico", motorDiesel, 40.5);
+        Caminhao volvo = new Caminhao("FH 540", "Prata Metalico", motorDiesel, 40.5);
 
         System.out.println("========================================");
-        System.out.println("       TESTE DE HERANCA ATIVADO         ");
+        System.out.println("       TESTE DE ABSTRACAO ATIVADO       ");
         System.out.println("========================================");
 
-        // Teste do Carro Esportivo
-        System.out.println("VEICULO: " + ferrari.getModelo());
+        // PROVA que o método abstrato foi implementado em cada subclasse
+        System.out.println("Descricao: " + ferrari.descricaoVeiculo());
         ferrari.getMotor().darPartida();
         ferrari.acelerar();
         ferrari.ativarTurbo();
@@ -35,12 +38,17 @@ public class Caminhao extends exercicio {
 
         System.out.println("----------------------------------------");
 
-        // Teste do Caminhão
-        System.out.println("VEICULO: " + volvo.getModelo());
+        System.out.println("Descricao: " + volvo.descricaoVeiculo());
         volvo.getMotor().darPartida();
         volvo.carregarCarga();
         volvo.acelerar();
         System.out.println("Velocidade Final: " + volvo.getVelocidadeAtual() + " km/h");
+
         System.out.println("========================================");
+
+        // ERRO DE COMPILACAO (deixe comentado para ver na prática):
+        // Se descomentar a linha abaixo, o compilador barra com:
+        // "exercicio is abstract; cannot be instantiated"
+        // exercicio v = new exercicio("Generico", "Branco", motorV12);
     }
 }

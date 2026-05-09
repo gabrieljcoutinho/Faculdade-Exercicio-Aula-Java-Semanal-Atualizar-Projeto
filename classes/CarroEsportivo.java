@@ -1,9 +1,15 @@
 public class CarroEsportivo extends exercicio {
-    private boolean modoTurbo; // Atributo exclusivo
+    private boolean modoTurbo;
 
     public CarroEsportivo(String modelo, String cor, Motor motor, boolean modoTurbo) {
-        super(modelo, cor, motor); // Chama o construtor da Superclasse
+        super(modelo, cor, motor);
         this.modoTurbo = modoTurbo;
+    }
+
+    // Implementação OBRIGATÓRIA do método abstrato
+    @Override
+    public String descricaoVeiculo() {
+        return "Carro Esportivo | Turbo: " + (modoTurbo ? "ATIVADO" : "desativado");
     }
 
     public void ativarTurbo() {
